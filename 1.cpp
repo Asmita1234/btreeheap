@@ -1,9 +1,6 @@
 #include<iostream>
 using namespace std;
 
-//maxheap class, using array
-
-
 class MaxHeap
 {
   public:
