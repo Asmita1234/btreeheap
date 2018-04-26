@@ -1,6 +1,9 @@
 #include<iostream>
 using namespace std;
 
+//maxheap class, using array
+
+
 class MaxHeap
 {
   public:
@@ -9,9 +12,11 @@ class MaxHeap
   MaxHeap()
   { 
     size=0;
+  }
 
-}
-void insert(int key)
+
+  //insert function inserts the element at the end,and then reheapifies it upwards
+  void insert(int key)
   {
   int i=size++;
   maxheap[i]=key;
@@ -28,8 +33,10 @@ void insert(int key)
     }
     i=p;
    }
-}
-void display()
+  }
+
+  //displays the array as it should be, since elements are arranged adhering to the properties of maximum heap
+  void display()
   {
    cout<<"\nTHE MAX-HEAP ELEMENTS ARE:";
    for(int i=0;i<size;i++)
@@ -37,8 +44,11 @@ void display()
      cout<<"\t"<<maxheap[i];
    }
   }
- void remove()
-{
+
+
+ //takes into consideration three cases, size=0, size=1, and size greater than 1
+  void remove()   //remove maximum element (i.e., root element)
+  {
   if(size==0)
   {
      cout<<"\nTHE HEAP IS EMPTY !!! \n \n";
@@ -47,14 +57,20 @@ void display()
   {
     size--;
   }
- else
+    
+  //when size>1
+  else
   {
     int i=0;
     maxheap[i]=maxheap[size-1];
     size--;
-while((2*i+1)+1<=size)
+    
+    //if the current node has a children
+    while((2*i+1)+1<=size)
     {
-if((2*i+2)+1<=size)
+       
+      //if it has two children
+      if((2*i+2)+1<=size)
       {
         int lc=maxheap[2*i+1];
         int rc=maxheap[2*i+2];
@@ -68,7 +84,9 @@ if((2*i+2)+1<=size)
         }
         
       }
- else
+      
+      //if it has only one child
+      else
       {
         if(maxheap[i]<maxheap[2*i+1])
         {
@@ -84,6 +102,7 @@ if((2*i+2)+1<=size)
   }
  }
 };
+
 int main()
 {
   MaxHeap MH;
@@ -100,6 +119,11 @@ int main()
   }
   MH.display();
   MH.remove();
+  cout<<"\nDeletion Processing . . . !!!";
   MH.display();
   return 0;
 }
+
+    
+ 
+  
